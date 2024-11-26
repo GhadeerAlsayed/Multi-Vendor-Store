@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Prodect;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProdectController extends Controller
@@ -35,7 +35,7 @@ class ProdectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prodect $prodect)
+    public function show(Product $prodect)
     {
         //
     }
@@ -43,7 +43,7 @@ class ProdectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodect $prodect)
+    public function edit(Product $prodect)
     {
         //
     }
@@ -51,7 +51,7 @@ class ProdectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodect $prodect)
+    public function update(Request $request, Product $prodect)
     {
         //
     }
@@ -59,7 +59,7 @@ class ProdectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodect $prodect)
+    public function destroy(Product $prodect)
     {
         //
     }

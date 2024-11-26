@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prodects', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('store_id')->nullable()->after('phone')->constrained('stores')->nullOnDelete();
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodects');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('store_id');
+        });
     }
 };
