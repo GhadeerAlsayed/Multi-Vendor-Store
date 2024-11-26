@@ -20,7 +20,21 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $request =request();
+
+
+//        Select a.*,b.name from parent_name
+//        from categories as a
+//        left join categories as b on b.id = a.perant_id
+        $categories = Category::leftJoin('categories as parents', 'parents.id', '=' ,'categories.parent_id')
+            ->select([
+                'categories.*',
+                'parents.name as parent_name'
+            ])
+            ->filter($request->query())
+            ->orderBy('categories.name')
+            ->paginate();
+
         return view('dashboard.categories.index',compact('categories'));
     }
 
@@ -29,6 +43,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         $parents = Category::all();
         $category = new Category();
         return view('dashboard.categories.create',compact('category','parents'));
@@ -119,9 +134,10 @@ class CategoryController extends Controller
     {
         $category = Category::findOrfail($id);
         $category->delete();
-        if ($category->image ){
-            Storage::disk('public')->delete($category->image);
-        }
+
+//        if ($category->image ){
+//            Storage::disk('public')->delete($category->image);
+//        }
 
         return redirect()->route('dashboard.categories.index')->with('success','Category delete');
     }

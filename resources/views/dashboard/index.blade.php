@@ -7,16 +7,16 @@
     <li class="breadcrumb-item active">Starter Page</li>
 @endsection
 
-{{--@if(session()->has('success'))--}}
-{{--    <div class="alert alert-success">--}}
-{{--        {{session('success')}}--}}
-{{--    </div>--}}
-{{--@endif--}}
-{{--@if(session()->has('info'))--}}
-{{--    <div class="alert alert-info">--}}
-{{--        {{session('info')}}--}}
-{{--    </div>--}}
-{{--@endif--}}
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{session('success')}}
+    </div>
+@endif
+@if(session()->has('info'))
+    <div class="alert alert-info">
+        {{session('info')}}
+    </div>
+@endif
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->

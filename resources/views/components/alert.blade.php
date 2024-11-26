@@ -1,10 +1,13 @@
-@if(session()->has('success'))
-    <div class="alert alert-success">
-        {{session('success')}}
+@php
+    $alertTypes = ['success', 'error', 'warning', 'info']; // أنواع التنبيهات المحتملة
+@endphp
+
+@foreach ($alertTypes as $type)
+
+@if(session()->has($type))
+    <div class="alert alert-{{ $type }}">
+        {{session($type)}}
     </div>
 @endif
-@if(session()->has('info'))
-    <div class="alert alert-info">
-        {{ session('info') }}
-    </div>
-@endif
+
+@endforeach

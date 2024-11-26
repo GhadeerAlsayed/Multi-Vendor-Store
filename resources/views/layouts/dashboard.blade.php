@@ -198,7 +198,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
 
-            @include('layouts.partiale.nav')
+{{--            @include('layouts.partiale.nav',['active' => 'dashboard'])--}}
+            <x-nav />
         </div>
         <!-- /.sidebar -->
     </aside>
